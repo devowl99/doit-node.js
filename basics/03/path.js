@@ -1,2 +1,5 @@
-// path 모듈 연습하기 ( 결과 비교 파일 : 03\results\path.js)
+const path = require("path");
+console.log(`전체 경로(__filename) : ${__filename}`);
+const fn2 = path.basename(__filename, '.js');
 
+console.log(fn2);
