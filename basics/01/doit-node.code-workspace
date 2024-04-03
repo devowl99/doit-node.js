@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"name": "doit-node.js",
+			"path": "../../doit-node.js"
+		}
+	],
+	"settings": {}
+}
