@@ -32,7 +32,7 @@ const createContact = asyncHandeler(async(req,res)=>{
 // GET /contacts/:id
 const getContact = asyncHandeler(async(req,res)=>{
     const contact = await Contact.findById(req.params.id);
-    res.send(contact);
+    res.render("update", { contact: contact });
 });
 
 // Update contact
@@ -51,22 +51,16 @@ const updateContact = asyncHandeler(async(req,res)=>{
 
     contact.save();
 
-    res.json(contact);
+    res.redirect("/contacts");
 })
 
 // Delete contact
 // DELETE /contacts/:id
 const deleteContact = asyncHandeler(async(req,res)=>{
     const id = req.params.id;
-
-    const contact = await Contact.findById(id);
-    if (!contact){
-        throw new Error("Contact not found.");
-    }
-    // 여기까진 update와 거의 동일
-
-    await Contact.deleteOne();
-    res.send("Deleted");
+    
+    await Contact.findByIdAndDelete(id);
+    res.redirect("/contacts");
 })
 
 module.exports = {
