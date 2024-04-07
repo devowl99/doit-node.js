@@ -8,14 +8,13 @@ app.set("views", "./views");
 
 app.use(express.static("./public"));
 app.use(methodOverride("_method"))
-dbConnect();
 
-app.get("/", (req,res)=>{
-    res.send("Hello Node");
-});
+dbConnect();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+
+app.use("/", require("./routes/loginRoutes"));
 app.use("/contacts", require("./routes/contactRoutes"));
 
 app.listen(3000, () => {
